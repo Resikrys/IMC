@@ -22,9 +22,14 @@ function calcularIMC() {
     alert("Este es tu IMC: " + '' + resultado);
 };
 
+//Evento para ocultar las cartas informativas por defecto
+// document.querySelectorAll('.card').forEach(function(card) {
+//     card.computedStyleMap.display = 'none';
+// });
 
-//Convertir pulgadas a cm & viceversa
+//Evento para mostrar la carta resultante -> Tras resultado hacer match y mostrar tarjeta
 
-//Convertir libras a kg & viceversa
+//Convertir pulgadas a cm & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir
 
-//Evento para mostrar la carta resultante
+//Convertir libras a kg & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir
+
