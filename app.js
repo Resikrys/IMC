@@ -38,7 +38,27 @@ document.getElementById('calcular').addEventListener("click", function(event) {
     }
 });
 
-//Convertir pulgadas a cm & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir
+//Convertir libras a kg & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir (addEventListener) ->  kg - libras (1lb = 0,454kg / 1kg = 2,2lb)
+document.getElementById('convertirPeso').addEventListener("click", function(event) {
+    event.preventDefault();
 
-//Convertir libras a kg & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir
+    let selectedUnity = document.getElementById('floatingSelect').value;
+    let pesoConversor = parseFloat(document.getElementById('floatingInput').value);
 
+    if (isNaN(pesoConversor) || pesoConversor <= 0) {
+        alert("Por favor, introduce un número válido.");
+        return;
+    }
+
+    if (selectedUnity === "kg") {
+        let convertirPesoBtn = pesoConversor * 2.2; // 1 kg = 2.2 lb
+        alert(`${pesoConversor} kilos son ${convertirPesoBtn.toFixed(2)} libras`);
+    } else if (selectedUnity === "lb") {
+        let convertirPesoBtn = pesoConversor * 0.454; // 1 lb = 0.454 kg
+        alert(`${pesoConversor} libras son ${convertirPesoBtn.toFixed(2)} kilos`);
+    } else {
+        alert("Por favor, selecciona una unidad válida.");
+    }
+});
+
+//Convertir pulgadas a cm & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir -> cm  - pulgadas (1 pie = 30,48cm / 1cm = 0,39 pulgadas -> 1 pie = 12 pulgadas)
