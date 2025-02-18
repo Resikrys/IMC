@@ -42,23 +42,44 @@ document.getElementById('calcular').addEventListener("click", function(event) {
 document.getElementById('convertirPeso').addEventListener("click", function(event) {
     event.preventDefault();
 
-    let selectedUnity = document.getElementById('floatingSelect').value;
+    let selectedUnityW = document.getElementById('floatingSelect').value;
     let pesoConversor = parseFloat(document.getElementById('floatingInput').value);
 
     if (isNaN(pesoConversor) || pesoConversor <= 0) {
         alert("Por favor, introduce un número válido.");
         return;
-    }
+    };
 
-    if (selectedUnity === "kg") {
+    if (selectedUnityW === "kg") {
         let convertirPesoBtn = pesoConversor * 2.2; // 1 kg = 2.2 lb
         alert(`${pesoConversor} kilos son ${convertirPesoBtn.toFixed(2)} libras`);
-    } else if (selectedUnity === "lb") {
+    } else if (selectedUnityW === "lb") {
         let convertirPesoBtn = pesoConversor * 0.454; // 1 lb = 0.454 kg
         alert(`${pesoConversor} libras son ${convertirPesoBtn.toFixed(2)} kilos`);
     } else {
         alert("Por favor, selecciona una unidad válida.");
-    }
+    };
 });
 
 //Convertir pulgadas a cm & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir -> cm  - pulgadas (1 pie = 30,48cm / 1cm = 0,39 pulgadas -> 1 pie = 12 pulgadas)
+document.getElementById('convertirAltura').addEventListener("click", function(event) {
+    event.preventDefault();
+
+    let selectedUnityH = document.getElementById('floatingSelectH').value;
+    let alturaConversor = parseFloat(document.getElementById('floatingInputH').value);
+
+    if (isNaN(alturaConversor) || alturaConversor <= 0) {
+        alert("Por favor, introduce un número válido.");
+        return;
+    };
+
+    if (selectedUnityH === "cm") {
+        let convertirAlturaBtn = alturaConversor * 0.39; // 1 cm = 0.39 pulgadas
+        alert(`${alturaConversor} centímetros son ${convertirAlturaBtn.toFixed(2)} pulgadas`);
+    } else if (selectedUnityH === "pulgadas") {
+        let convertirAlturaBtn = alturaConversor * (12 * 30.48); // 1 pie = 12 pulagas / 1 pie = 30.48cm / 1 pulgada = (12 * 30.48) cm
+        alert(`${alturaConversor} pulgadas son ${convertirAlturaBtn.toFixed(2)} centímetros`);
+    } else {
+        alert("Por favor, selecciona una unidad válida.");
+    };
+});
