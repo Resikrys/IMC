@@ -1,7 +1,11 @@
 //Cálculo IMC
-// document.getElementById('calcular').addEventListener("click", calcularIMC());
+//Evento para ocultar las cartas informativas por defecto
+let cards = document.querySelectorAll('.result-card');
+cards.forEach(card => card.classList.add("d-none"));
 
-function calcularIMC() {
+document.getElementById('calcular').addEventListener("click", function(event) {
+    event.preventDefault(); //Para evitar que el formulario recargue la página
+
     let peso = parseFloat(document.getElementById('inputWeight').value);
     let altura = parseFloat(document.getElementById('inputHeight').value);
 
@@ -17,7 +21,7 @@ function calcularIMC() {
         resultadoId = 'infoBien';
     } else if (imc >= 25 && imc < 29.9) {
         mensaje = 'Sobrepeso';
-        resultadoId = imc + 'infoSobrepeso';
+        resultadoId = 'infoSobrepeso';
     } else if (imc > 30) {
         mensaje = 'Obesidad';
         resultadoId = 'infoObesidad';
@@ -26,16 +30,13 @@ function calcularIMC() {
     };
 
     alert(`Tu IMC es ${imc.toFixed(2)}: ${mensaje}`);
-
-    
-    //Evento para ocultar las cartas informativas por defecto --> Corregir error! Se resetea y ejecuta y no se aprecia a leer la carta revelada
-    let cards = document.querySelectorAll('.result-card');
-    cards.forEach(card => card.style.display = "none");
     
     //Evento para mostrar la carta resultante -> Tras resultado hacer match y mostrar tarjeta
-    document.getElementById(resultadoId).style.display = "block";
-
-};
+    let resultadoCard = document.getElementById(resultadoId);
+    if (resultadoCard) {
+        resultadoCard.classList.remove("d-none");
+    }
+});
 
 //Convertir pulgadas a cm & viceversa -> Introducir numero / Seleccionar unidad / Seleccionar unidad conversion / Submit convertir
 
